@@ -8,7 +8,8 @@ class CreateMeme extends Component {
     super(props)
     this.state = {
       title: '',
-      selectedFile: null
+      selected: {},
+      file: {}
 
     }
   }
@@ -19,24 +20,24 @@ class CreateMeme extends Component {
 
     onFileChange = (event) => {
       this.setState({
-        selectedFile: event.target.files[0]
+        selected: event.target.files[0]
       })
     }
 
     handleSubmit = (event) => {
       event.preventDefault()
-      console.log(event.target)
-      const data = new FormData()
       const { user, msgAlert } = this.props
-      data.append('upload', this.state.selectedFile)
-      console.log(this.state.selectedFile)
+      const formData = new FormData()
+      formData.append('upload', this.state.selected)
+      console.log(this.state.selected)
       console.log(this.state.title)
       console.log(user)
+      console.log(this.state)
+      console.log(formData)
       createMeme(this.state, user)
-        .then(console.log(this.state.title))
       // .then(() => this.setState({ created: true }))
-      // .then((res) => this.setState(res.data.file))
-        .then(console.log(this.state.selectedFile))
+        .then((res) => this.setState(res.formData.file))
+        .then(console.log(this.state))
         .then(() => {
           msgAlert({
             heading: 'Meme created',
