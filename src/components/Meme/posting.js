@@ -11,7 +11,7 @@ import Button from 'react-bootstrap/Button'
 
 function PostMeme () {
   const [selected, setSelected] = useState({})
-  //   const [file, setFile] = useState({})
+  const [file, setFile] = useState({})
   const [loading, setLoading] = useState(false)
 
   const handleSubmit = (event) => {
@@ -29,7 +29,8 @@ function PostMeme () {
         'Content-Type': 'multipart/form-data'
       }
     })
-    //   .then((res) => setFile(res.data.file))
+      .then((res) => setFile(res.data.upload.url))
+    //   .then((res) => console.log(res.data.upload.url))
       .then(() => setLoading(false))
       .catch(console.error)
   }
@@ -44,13 +45,13 @@ function PostMeme () {
   return (
     <>
       <div className='App'>
-        {/* {file.url
+        {file
           ? (
-            <img className='displayImg' alt='uploaded file' src={file.url} />
+            <img className='displayImg' alt='uploaded file' src={file} />
           )
           : (
             ''
-          )} */}
+          )}
         {loading
           ? (
             <img
