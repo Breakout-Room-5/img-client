@@ -10,7 +10,7 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
-import CreateMeme from './components/Meme/create'
+import PostMeme from './components/Meme/posting'
 
 class App extends Component {
   constructor (props) {
@@ -91,7 +91,7 @@ class App extends Component {
             user={user}
             path='/create-meme'
             render={() => (
-              <CreateMeme msgAlert={this.msgAlert} user={user} />
+              <PostMeme msgAlert={this.msgAlert} user={user} />
             )}
           />
         </main>

@@ -7,7 +7,7 @@ export const createMeme = (data, user) => {
     {
       headers: {
         Authorization: `Bearer ${user.token}`,
-        'Content-Type': 'multipart/form-data; boundary=MyBoundary'
+        'Content-Type': 'multipart/form-data'
       }
     })
 }

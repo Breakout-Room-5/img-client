@@ -36,7 +36,6 @@ class CreateMeme extends Component {
       console.log(formData)
       createMeme(this.state, user)
       // .then(() => this.setState({ created: true }))
-        .then((res) => this.setState(res.formData.file))
         .then(console.log(this.state))
         .then(() => {
           msgAlert({
