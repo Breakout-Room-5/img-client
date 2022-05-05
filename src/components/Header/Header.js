@@ -8,6 +8,8 @@ const authenticatedOptions = (
     <NavLink to='/change-password' className='nav-link'>Change Password</NavLink>
     <NavLink to='/sign-out' className='nav-link'>Sign Out</NavLink>
     <NavLink to='/create-meme' className='nav-link'>Create Meme</NavLink>
+    <NavLink to='/my-memes' className='nav-link'>My Memes</NavLink>
+    <NavLink to='/home' className='nav-link'>Home</NavLink>
   </Fragment>
 )
 

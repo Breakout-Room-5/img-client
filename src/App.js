@@ -11,6 +11,10 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import PostMeme from './components/Meme/posting'
+import IndexMeme from './components/Meme/index'
+import IndexAllMeme from './components/Meme/index_all'
+import ShowMeme from './components/Meme/show'
+import EditMeme from './components/Meme/edit'
 
 class App extends Component {
   constructor (props) {
@@ -93,6 +97,30 @@ class App extends Component {
             render={() => (
               <PostMeme msgAlert={this.msgAlert} user={user} />
             )}
+          />
+          <AuthenticatedRoute
+            exact
+            user={user}
+            path='/my-memes'
+            render={() => <IndexMeme msgAlert={this.msgAlert} user={user} />}
+          />
+          <AuthenticatedRoute
+            exact
+            user={user}
+            path='/home'
+            render={() => <IndexAllMeme msgAlert={this.msgAlert} user={user} />}
+          />
+          <AuthenticatedRoute
+            exact
+            user={user}
+            path='/uploads/:id'
+            render={() => <ShowMeme msgAlert={this.msgAlert} user={user} />}
+          />
+          <AuthenticatedRoute
+            exact
+            user={user}
+            path='/my-memes/:id/edit'
+            render={() => <EditMeme msgAlert={this.msgAlert} user={user} />}
           />
         </main>
       </Fragment>
