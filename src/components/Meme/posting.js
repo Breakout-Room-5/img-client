@@ -1,27 +1,22 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
-// import './App.css'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-
-// const data= new FormData()
-// data.append('upload', selected)
-// in the lesson Eron does this under App js which means this will render when the page opens, are we having an issue because it isn't rendering the default
-
+import { Redirect } from 'react-router-dom'
 function PostMeme ({ user, msgAlert }) {
   const [selected, setSelected] = useState({})
   const [file, setFile] = useState(null)
   const [loading, setLoading] = useState(false)
   const [name, setName] = useState('')
+  const [created, setCreated] = useState(false)
+
   const handleSubmit = (event) => {
     event.preventDefault()
     setLoading(true)
     const data = new FormData()
-    console.log(selected)
     data.append('upload', selected)
     data.append('name', name)
-    console.log(data)
     axios({
       url: `${apiUrl}/uploads`,
       method: 'POST',
@@ -32,9 +27,9 @@ function PostMeme ({ user, msgAlert }) {
       }
     })
       .then((res) => {
-        console.log(res.data.upload)
         setFile(res.data.upload.url)
       })
+      .then(() => setCreated(true))
       .then(() =>
         msgAlert({
           heading: 'Upload Success',
@@ -58,6 +53,16 @@ function PostMeme ({ user, msgAlert }) {
 
   const handleName = (event) => {
     setName(event.target.value)
+  }
+
+  if (created) {
+    return (
+      <Redirect
+        to={{
+          pathname: '/my-memes'
+        }}
+      />
+    )
   }
 
   return (
@@ -96,7 +101,6 @@ function PostMeme ({ user, msgAlert }) {
           <Form.Group>
             <Form.Label>Upload your image</Form.Label>
             <Form.Control id="fileUpload" type="file" label="Upload File Here" onChange={handleChange}/>
-            {/* <input id="fileUpload" label="Upload File Here" type='file' onChange={handleChange} /> */}
           </Form.Group>
           <Button variant='primary' type='submit'>Submit</Button>
         </Form>

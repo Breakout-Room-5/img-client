@@ -15,6 +15,7 @@ import IndexMeme from './components/Meme/index'
 import IndexAllMeme from './components/Meme/index_all'
 import ShowMeme from './components/Meme/show'
 import EditMeme from './components/Meme/edit'
+import Home from './components/Meme/home'
 
 class App extends Component {
   constructor (props) {
@@ -61,6 +62,13 @@ class App extends Component {
           />
         ))}
         <main className='container'>
+          <Route
+            exact
+            path='/'
+            render={() => (
+              <Home msgAlert={this.msgAlert} setUser={this.setUser} />
+            )}
+          />
           <Route
             path='/sign-up'
             render={() => (

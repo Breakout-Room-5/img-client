@@ -10,15 +10,13 @@ import { Redirect, withRouter } from 'react-router-dom'
 // import Form from 'react-bootstrap/Form'
 // import Button from 'react-bootstrap/Button'
 
-function EditMeme ({ user, match }) {
+function EditMeme ({ user, match, msgAlert }) {
   //   const [selected, setSelected] = useState({})
   const [upload, setUpload] = useState(null)
   const [name, setName] = useState('')
   const [updated, setUpdated] = useState(false)
 
   useEffect(() => {
-    console.log(user)
-    console.log(match)
     axios({
       url: `${apiUrl}/uploads/${match.params.id}`,
       method: 'GET',
@@ -29,26 +27,10 @@ function EditMeme ({ user, match }) {
     })
       .then((res) => {
         setUpload(res.data.upload)
-        console.log(res.data.memes)
       })
-    //   .then(() => {
-    //     msgAlert({
-    //       heading: 'Index success',
-    //       message: 'Woot indexed',
-    //       variant: 'success'
-    //     })
-    //   })
-      .catch(console.error)
-    //   => {
-    // msgAlert({
-    //   heading: 'Index fail',
-    //   message: 'Index error: ' + error.message,
-    //   variant: 'danger'
-    // })
-    //   })
   }, [])
+
   const onSubmit = (event) => {
-    console.log(name)
     event.preventDefault()
     axios({
       url: `${apiUrl}/uploads/${match.params.id}`,
@@ -63,7 +45,20 @@ function EditMeme ({ user, match }) {
       }
     })
       .then(() => setUpdated(true))
-      .catch(console.error)
+      .then(() => {
+        msgAlert({
+          heading: 'Update Success',
+          message: 'You got it!',
+          variant: 'success'
+        })
+      })
+      .catch((error) => {
+        msgAlert({
+          heading: 'Oops',
+          message: 'Update error: ' + error.message,
+          variant: 'danger'
+        })
+      })
   }
   const handleName = (event) => {
     setName(event.target.value)
@@ -83,10 +78,7 @@ function EditMeme ({ user, match }) {
   return (
     <div>
       <h2>{upload.name}</h2>
-      <p>Created At{upload.createdAt}</p>
-      <p>Update At{upload.updatedAt}</p>
-      <p>Owner{upload.owner}</p>
-      <img src={upload.url}/>
+      <img className='displayImg' src={upload.url} />
       <Form onSubmit={onSubmit}>
         <Form.Group controlId='name'>
           <Form.Label>Name</Form.Label>
@@ -98,7 +90,8 @@ function EditMeme ({ user, match }) {
             onChange={handleName}
           />
         </Form.Group>
-        <Button variant='primary' type='submit'>Submit</Button>
+        <Button variant='primary' type='submit'> Submit
+        </Button>
       </Form>
     </div>
   )

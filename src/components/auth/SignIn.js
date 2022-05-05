@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 
 import { signIn } from '../../api/auth'
 import { signInSuccess, signInFailure } from '../AutoDismissAlert/messages'
@@ -13,7 +13,8 @@ class SignIn extends Component {
 
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      updated: false
     }
   }
 
@@ -25,7 +26,7 @@ handleChange = (event) =>
 onSignIn = (event) => {
   event.preventDefault()
 
-  const { msgAlert, history, setUser } = this.props
+  const { msgAlert, setUser } = this.props
 
   signIn(this.state)
     .then((res) => setUser(res.data.user))
@@ -36,7 +37,8 @@ onSignIn = (event) => {
         variant: 'success'
       })
     )
-    .then(() => history.push('/'))
+    // .then(() => history.push('/'))
+    .then(() => this.setState({ updated: true }))
     .catch((error) => {
       this.setState({ email: '', password: '' })
       msgAlert({
@@ -49,7 +51,9 @@ onSignIn = (event) => {
 
 render () {
   const { email, password } = this.state
-
+  if (this.state.updated) {
+    return <Redirect to={'/home'} />
+  }
   return (
     <div className='row'>
       <div className='col-sm-10 col-md-8 mx-auto mt-5'>

@@ -1,22 +1,16 @@
 
 import React, { useState, useEffect } from 'react'
-// import { indexMemes } from '../../api/meme'
+
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
 import { Redirect, Link, withRouter } from 'react-router-dom'
-// import './App.css'
-// import Form from 'react-bootstrap/Form'
-// import Button from 'react-bootstrap/Button'
 
-function ShowMeme ({ user, match }) {
-  //   const [selected, setSelected] = useState({})
-  const [upload, setUpload] = useState(null)
+function ShowMeme ({ user, match, msgAlert }) {
+  const [meme, setMeme] = useState(null)
   const [deleted, setDeleted] = useState(false)
 
   useEffect(() => {
-    console.log(user)
-    console.log(match)
     axios({
       url: `${apiUrl}/uploads/${match.params.id}`,
       method: 'GET',
@@ -30,25 +24,8 @@ function ShowMeme ({ user, match }) {
       // pass that array to map
     })
       .then((res) => {
-        setUpload(res.data.upload)
-        console.log(res.data.memes)
+        setMeme(res.data.upload)
       })
-    //   .then(() => {
-    //     msgAlert({
-    //       heading: 'Index success',
-    //       message: 'Woot indexed',
-    //       variant: 'success'
-    //     })
-    //   })
-      .then(console.log(upload))
-      .catch(console.error)
-    //   => {
-    // msgAlert({
-    //   heading: 'Index fail',
-    //   message: 'Index error: ' + error.message,
-    //   variant: 'danger'
-    // })
-    //   })
   }, [])
   const destroy = () => {
     axios({
@@ -60,14 +37,23 @@ function ShowMeme ({ user, match }) {
       }
     })
       .then(() => setDeleted(true))
-      .catch(console.error)
+      .then(() => {
+        msgAlert({
+          heading: 'Deleted',
+          message: 'Meme Yeeted',
+          variant: 'success'
+        })
+      })
+      .catch(error => {
+        msgAlert({
+          heading: 'It\'s not going anywhere!',
+          message: 'Delete error: ' + error.message,
+          variant: 'danger'
+        })
+      })
   }
 
-  // const { memes } = this.state
-  //   if (memes === null) {
-  //     return 'Loading...'
-  //   }
-  if (!upload) {
+  if (!meme) {
     return <p>Loading...</p>
   }
 
@@ -81,13 +67,13 @@ function ShowMeme ({ user, match }) {
 
   return (
     <div>
-      <h2>{upload.name}</h2>
-      <p>Created At{upload.createdAt}</p>
-      <p>Update At{upload.updatedAt}</p>
-      <p>Owner{upload.owner}</p>
-      <img src={upload.url} />
+      <h1>{meme.name}</h1>
+      <img className='displayImg' src={meme.url} />
+      <p>Creator: {meme.author}</p>
+      <p>Created: {meme.createdAt.substring(0, 10)}</p>
+      <p>Updated: {meme.updatedAt.substring(0, 10)}</p>
+
       <button onClick={destroy}>Delete meme</button>
-      <Link to='/my-memes'>Back to My Memes</Link>
       <Link to={'/my-memes/' + match.params.id + '/edit'}>
         <button>Edit Meme</button>
       </Link>

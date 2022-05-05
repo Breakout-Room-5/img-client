@@ -7,7 +7,7 @@ import apiUrl from '../../apiConfig'
 // import Form from 'react-bootstrap/Form'
 // import Button from 'react-bootstrap/Button'
 
-function IndexAllMeme ({ user }) {
+function IndexAllMeme ({ user, msgAlert }) {
 //   const [selected, setSelected] = useState({})
   const [memes, setMemes] = useState([])
   useEffect(() => {
@@ -28,47 +28,37 @@ function IndexAllMeme ({ user }) {
         setMemes(res.data.uploads)
         console.log(res.data.memes)
       })
-    //   .then(() => {
-    //     msgAlert({
-    //       heading: 'Index success',
-    //       message: 'Woot indexed',
-    //       variant: 'success'
-    //     })
-    //   })
-      .then(console.log(memes))
-      .catch(console.error)
-    //   => {
-    // msgAlert({
-    //   heading: 'Index fail',
-    //   message: 'Index error: ' + error.message,
-    //   variant: 'danger'
-    // })
-    //   })
+      // .then(() => {
+      //   msgAlert({
+      //     heading: 'Success!',
+      //     message: 'This is everyone\'s image',
+      //     variant: 'success'
+      //   })
+      // })
+      // .catch((error) => {
+      //   msgAlert({
+      //     heading: 'Oops',
+      //     message: 'Index error: ' + error.message,
+      //     variant: 'danger'
+      //   })
+      // })
   }, [])
-  // const { memes } = this.state
-  //   if (memes === null) {
-  //     return 'Loading...'
-  //   }
 
   let memesJSX
   if (memes) {
     memesJSX = memes.map(meme => {
       return (
-        <li key={meme._id}>
-          <h2>{meme.name}</h2>
-          <p>Created At{meme.createdAt}</p>
-          <p>Update At{meme.updatedAt}</p>
-          <p>Owner{meme.owner}</p>
-          <img src={meme.url}/>
-        </li>
+        <div key={meme._id}>
+          <h1>{meme.name}</h1>
+          <img className='displayImg' src={meme.url} />
+          <p>Creator: {meme.author}</p>
+          <p>Created: {meme.createdAt.substring(0, 10)}</p>
+          <p>Updated: {meme.updatedAt.substring(0, 10)}</p>
+        </div>
       )
     })
   }
-  //   const indexMeme = memes.map(meme => (
-  //     <li key={meme._id}>
-  //       <Link to={`/memes/${meme._id}`}>{meme.title}</Link>
-  //     </li>
-  //   ))
+
   return (
     <>
       <h3>All the memes:</h3>

@@ -5,11 +5,11 @@ import { Link, NavLink } from 'react-router-dom'
 
 const authenticatedOptions = (
   <Fragment>
-    <NavLink to='/change-password' className='nav-link'>Change Password</NavLink>
-    <NavLink to='/sign-out' className='nav-link'>Sign Out</NavLink>
     <NavLink to='/create-meme' className='nav-link'>Create Meme</NavLink>
     <NavLink to='/my-memes' className='nav-link'>My Memes</NavLink>
-    <NavLink to='/home' className='nav-link'>Home</NavLink>
+    {/* <NavLink to='/home' className='nav-link'>All Meme</NavLink> */}
+    <NavLink to='/change-password' className='nav-link'>Change Password</NavLink>
+    <NavLink to='/sign-out' className='nav-link'>Sign Out</NavLink>
   </Fragment>
 )
 
@@ -22,14 +22,15 @@ const unauthenticatedOptions = (
 
 const alwaysOptions = (
   <Fragment>
-    <NavLink exact to='/' className='nav-link'>Home</NavLink>
+    <NavLink to='/home' className='nav-link'>Home</NavLink>
+    {/* <NavLink exact to='/' className='nav-link'>Home</NavLink> */}
   </Fragment>
 )
 
 const Header = ({ user }) => (
   <Navbar bg='primary' variant='dark' expand='md'>
     <Navbar.Brand>
-      <Link to='/' style={{ color: '#FFF', textDecoration: 'none' }}>react-auth-template</Link>
+      <Link to='/' style={{ color: '#FFF', textDecoration: 'none' }}>Meme Central</Link>
     </Navbar.Brand>
     <Navbar.Toggle aria-controls='basic-navbar-nav' />
     <Navbar.Collapse id='basic-navbar-nav'>
