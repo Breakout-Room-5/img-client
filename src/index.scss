@@ -1,1 +1,8 @@
 @import '~bootstrap/scss/bootstrap';
+
+.displayImg {
+    display: flex;
+    max-width: 500px;
+    max-height: 500px;
+    margin: 20px auto;
+}

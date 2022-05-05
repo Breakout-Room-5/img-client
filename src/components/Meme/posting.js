@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button'
 // data.append('upload', selected)
 // in the lesson Eron does this under App js which means this will render when the page opens, are we having an issue because it isn't rendering the default
 
-function PostMeme ({ user }) {
+function PostMeme ({ user, msgAlert }) {
   const [selected, setSelected] = useState({})
   const [file, setFile] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -35,9 +35,21 @@ function PostMeme ({ user }) {
         console.log(res.data.upload)
         setFile(res.data.upload.url)
       })
-    //   .then((res) => console.log(res.data.upload.url))
+      .then(() =>
+        msgAlert({
+          heading: 'Upload Success',
+          message: 'Nice meme!',
+          variant: 'success'
+        })
+      )
       .then(() => setLoading(false))
-      .catch(console.error)
+      .catch((error) => {
+        msgAlert({
+          heading: 'Oops',
+          message: 'Upload fail:' + error.message,
+          variant: 'danger'
+        })
+      })
   }
 
   const handleChange = (event) => {
