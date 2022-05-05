@@ -10,6 +10,7 @@ function ShowMeme ({ user, match, msgAlert }) {
   const [meme, setMeme] = useState(null)
   const [deleted, setDeleted] = useState(false)
   const [show, setShow] = useState(false)
+  // const [editToggle, setEditToggle] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
@@ -30,6 +31,7 @@ function ShowMeme ({ user, match, msgAlert }) {
         setMeme(res.data.upload)
       })
   }, [])
+
   const destroy = () => {
     axios({
       url: `${apiUrl}/uploads/${match.params.id}`,
@@ -55,7 +57,9 @@ function ShowMeme ({ user, match, msgAlert }) {
         })
       })
   }
-
+  // const onEdit = () => {
+  //   setEditToggle(!editToggle)
+  // }
   if (!meme) {
     return <p>Loading...</p>
   }
@@ -67,6 +71,11 @@ function ShowMeme ({ user, match, msgAlert }) {
       />
     )
   }
+  // if (editToggle === false) {
+  //   return (
+  //     <Redirect to={{ pathname: '/my-memes/' + match.params.id }} />
+  //   )
+  // }
 
   return (
     <div>
@@ -88,9 +97,11 @@ function ShowMeme ({ user, match, msgAlert }) {
           <Button variant='primary' onClick={destroy}>Delete</Button>
         </Modal.Footer>
       </Modal>
+
       <Link to={'/my-memes/' + match.params.id + '/edit'}>
-        <button>Edit Meme</button>
+        <Button className="btn btn-primary" style={{ marginLeft: '5px' }} >Edit Meme</Button>
       </Link>
+
     </div>
   )
 }

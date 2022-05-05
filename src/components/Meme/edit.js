@@ -77,8 +77,6 @@ function EditMeme ({ user, match, msgAlert }) {
 
   return (
     <div>
-      <h2>{upload.name}</h2>
-      <img className='displayImg' src={upload.url} />
       <Form onSubmit={onSubmit}>
         <Form.Group controlId='name'>
           <Form.Label>Name</Form.Label>

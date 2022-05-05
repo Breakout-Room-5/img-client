@@ -45,7 +45,7 @@ function IndexMeme ({ user, msgAlert }) {
         <div key={meme._id}>
           <div style={{ textAlign: 'center', color: 'pink', border: 'solid', margin: '10px', borderColor: 'pink' }} >
             <h1>{meme.name}</h1>
-            <Link to={`/uploads/${meme._id}`}>
+            <Link to={`/my-memes/${meme._id}`}>
               <img className='displayImg' src={meme.url} />
             </Link>
             <p>Creator: {meme.author}</p>
