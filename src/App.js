@@ -113,7 +113,6 @@ class App extends Component {
             render={() => <IndexMeme msgAlert={this.msgAlert} user={user} />}
           />
           <AuthenticatedRoute
-            exact
             user={user}
             path='/home'
             render={() => <IndexAllMeme msgAlert={this.msgAlert} user={user} />}

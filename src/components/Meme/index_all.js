@@ -7,7 +7,7 @@ import apiUrl from '../../apiConfig'
 // import Form from 'react-bootstrap/Form'
 // import Button from 'react-bootstrap/Button'
 
-function IndexAllMeme ({ user, msgAlert }) {
+function IndexAllMeme ({ user }) {
 //   const [selected, setSelected] = useState({})
   const [memes, setMemes] = useState([])
   useEffect(() => {
