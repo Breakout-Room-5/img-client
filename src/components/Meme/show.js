@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react'
-
+import { Modal, Button } from 'react-bootstrap'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
@@ -9,6 +9,9 @@ import { Redirect, Link, withRouter } from 'react-router-dom'
 function ShowMeme ({ user, match, msgAlert }) {
   const [meme, setMeme] = useState(null)
   const [deleted, setDeleted] = useState(false)
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   useEffect(() => {
     axios({
@@ -73,7 +76,18 @@ function ShowMeme ({ user, match, msgAlert }) {
       <p>Created: {meme.createdAt.substring(0, 10)}</p>
       <p>Updated: {meme.updatedAt.substring(0, 10)}</p>
 
-      <button onClick={destroy}>Delete meme</button>
+      <Button variant='primary' onClick={handleShow}>Delete</Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete Post</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure?</Modal.Body>
+        <Modal.Footer>
+          <Button variant='secondary' onClick={handleClose}>Close</Button>
+          <Button variant='primary' onClick={destroy}>Delete</Button>
+        </Modal.Footer>
+      </Modal>
       <Link to={'/my-memes/' + match.params.id + '/edit'}>
         <button>Edit Meme</button>
       </Link>
