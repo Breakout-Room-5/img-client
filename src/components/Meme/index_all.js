@@ -69,7 +69,12 @@ function IndexAllMeme ({ user }) {
     <>
       <h3 style={{ textAlign: 'center', fontSize: '80px' }}>THE MEME CENTRAL</h3>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <ul style={{ display: 'flex', flexDirection: 'column-reverse', gap: '50px' }}>
+        <ul
+          style={{
+            display: 'flex',
+            flexDirection: 'column-reverse',
+            gap: '50px'
+          }}>
           {memesJSX}
         </ul>
       </div>

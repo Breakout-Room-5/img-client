@@ -8,18 +8,11 @@
     margin: 20px auto;
 }
 
-.nav-meme {
+.main-title {
         font-family: 'Fredoka One',
         cursive;
-        font-size: 60px;
+        font-size: 125px;
         text-align: center;
-        color: black;
-}
-
-.nav-meme:hover {
-    font-family: 'Fredoka One',
-        cursive;
-    text-align: center;
         background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2), color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22));
         background-image: gradient(linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2), color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22));
         color: transparent;
@@ -32,32 +25,83 @@
         -o-animation: animatedBackground 5s linear infinite;
 }
 
+.nav-meme {
+        font-family: 'Fredoka One',
+        cursive;
+        font-size: 60px;
+        text-align: center;
+        color: black;
+}
+
+.nav-meme:hover {
+    font-family: 'Fredoka One',
+        cursive;
+    text-align: center;
+        background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.9, #ff2), color-stop(1, #f22));
+        background-image: gradient(linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22));
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+        animation: animatedBackground 5s linear infinite;
+        -moz-animation: animatedBackground 5s linear infinite;
+        -webkit-animation: animatedBackground 5s linear infinite;
+        -ms-animation: animatedBackground 5s linear infinite;
+        -o-animation: animatedBackground 5s linear infinite;
+        }
+
 .nav {
     font-weight: bold;
     font-family: 'Nunito', sans-serif;
     // background-color: rgb(16, 243, 20);
-    background: rgb(0, 255, 27);
-    background: radial-gradient(circle, rgba(0, 255, 27, 1) 0%, rgba(255, 0, 166, 1) 100%);
+    background: rgb(34, 255, 34);
+    background: linear-gradient(42deg, rgba(34, 255, 34, 1) 30%, #ff00a6 100%);
     min-width: 100%;
     color: black;
     font-size: 30px;
 }
-.navItem {
-    color: red;
-}
+
 body {
     background-color: rgb(24, 23, 23);
 }
 .btn:hover {
     color: white;
-    background-color: tomato !important;
-    border-color: darkred !important;
+    background-color: #2f2 !important;
+
+}
+
+.form-control {
+    color: white;
+    font-size: 25px;
+    background-color: black;
+    border: solid 3px #2f2;
+    border-radius: 20px;
+    height: 100px;
+}
+
+.form-control:focus {
+    color: white;
+    background-color: black;
+    border-color: #ff00a6;
+}
+
+.btn {
+    font-family: 'Nunito', sans-serif;
+    font-size: 25px;
+    width: 200px;
+    height: 100px;
+    color: white;
+    background-color: tomato;
+    border: solid 7px;
+    border-radius: 20px;
+    border-color: darkred;
+
 }
 .memeCentralImage {
-    max-width: 40%;
-    max-height: 40%;
+    max-width: 50%;
+    max-height: 50%;
     object-fit: cover;
-    border: 15px solid rgb(16, 243, 20);
+    border: 15px solid #2f2;
+    border-radius: 35px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 40px;
@@ -152,5 +196,5 @@ p, h1, h3, label, h4 {
 }
 
 .headers {
-    font-size: 90px;
+    font-size: 80px;
 }

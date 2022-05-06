@@ -79,10 +79,7 @@ function PostMeme ({ user, msgAlert }) {
           )}
         {loading
           ? (
-            <img
-              alt='loading gif'
-              src='https://miro.medium.com/max/882/1*9EBHIOzhE1XfMYoKz1JcsQ.gif'
-            />
+            <img alt='loading gif' src='https://i.gifer.com/VhdJ.gif' width='500' />
           )
           : (
             ''
@@ -100,7 +97,12 @@ function PostMeme ({ user, msgAlert }) {
           </Form.Group>
           <Form.Group>
             <Form.Label className='headers'>Upload your image</Form.Label>
-            <Form.Control id="fileUpload" type="file" label="Upload File Here" onChange={handleChange}/>
+            <Form.Control
+              id='fileUpload'
+              type='file'
+              label='Upload File Here'
+              onChange={handleChange}
+            />
           </Form.Group>
           <Button variant='primary' type='submit'>Submit</Button>
         </Form>

@@ -94,6 +94,7 @@ render () {
           </Form.Group>
           <Button variant='primary' type='submit'>Submit
           </Button>
+          <img alt='loading gif' src='https://i.gifer.com/yH.gif' width='150' />
         </Form>
       </div>
     </div>
