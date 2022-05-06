@@ -78,31 +78,31 @@ function ShowMeme ({ user, match, msgAlert }) {
   // }
 
   return (
-    <div>
+    <>
       <h1>{meme.name}</h1>
       <img className='displayImg' src={meme.url} />
-      <p>Creator: {meme.author}</p>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        {/* <p>Creator: {meme.author}</p>
       <p>Created: {meme.createdAt.substring(0, 10)}</p>
-      <p>Updated: {meme.updatedAt.substring(0, 10)}</p>
+      <p>Updated: {meme.updatedAt.substring(0, 10)}</p> */}
+        <Button variant='primary' onClick={handleShow}>Delete Meme</Button>
 
-      <Button variant='primary' onClick={handleShow}>Delete</Button>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Delete Post</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Are you sure you want to delete?</Modal.Body>
+          <Modal.Footer>
+            <Button variant='secondary' onClick={handleClose}>Close</Button>
+            <Button variant='primary' onClick={destroy}>Delete</Button>
+          </Modal.Footer>
+        </Modal>
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Delete Post</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Are you sure?</Modal.Body>
-        <Modal.Footer>
-          <Button variant='secondary' onClick={handleClose}>Close</Button>
-          <Button variant='primary' onClick={destroy}>Delete</Button>
-        </Modal.Footer>
-      </Modal>
-
-      <Link to={'/my-memes/' + match.params.id + '/edit'}>
-        <Button className="btn btn-primary" style={{ marginLeft: '5px' }} >Edit Meme</Button>
-      </Link>
-
-    </div>
+        <Link to={'/my-memes/' + match.params.id + '/edit'}>
+          <Button className='btn btn-primary' style={{ marginLeft: '5px' }}>Edit Meme</Button>
+        </Link>
+      </div>
+    </>
   )
 }
 

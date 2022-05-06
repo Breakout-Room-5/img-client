@@ -79,7 +79,7 @@ function EditMeme ({ user, match, msgAlert }) {
     <div>
       <Form onSubmit={onSubmit}>
         <Form.Group controlId='name'>
-          <Form.Label>Name</Form.Label>
+          <Form.Label className='headers'>Name</Form.Label>
           <Form.Control
             required
             name='name'

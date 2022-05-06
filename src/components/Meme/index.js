@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import { Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 function IndexMeme ({ user, msgAlert }) {
   const [memes, setMemes] = useState([])
@@ -43,8 +44,10 @@ function IndexMeme ({ user, msgAlert }) {
       return (
         <div key={meme._id}>
           <Card className='memecard' style={{ width: '40rem' }}>
-            <Card.Title className='rainbow'>{meme.name}</Card.Title>
-            <Card.Img variant='top' src={meme.url} />
+            <Link to={`/my-memes/${meme._id}`}>
+              <Card.Title className='rainbow'>{meme.name}</Card.Title>
+              <Card.Img variant='top' src={meme.url} />
+            </Link>
             <Card.Body>
               <Card.Text>
                 <p>Creator: {meme.author}</p>
