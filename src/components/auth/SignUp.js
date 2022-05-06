@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 
 import { signUp, signIn } from '../../api/auth'
 import { signUpSuccess, signUpFailure } from '../AutoDismissAlert/messages'
@@ -15,7 +15,8 @@ class SignUp extends Component {
     this.state = {
       email: '',
       password: '',
-      passwordConfirmation: ''
+      passwordConfirmation: '',
+      updated: false
     }
   }
 
@@ -27,7 +28,7 @@ handleChange = (event) =>
 onSignUp = (event) => {
   event.preventDefault()
 
-  const { msgAlert, history, setUser } = this.props
+  const { msgAlert, setUser } = this.props
 
   signUp(this.state)
     .then(() => signIn(this.state))
@@ -39,7 +40,8 @@ onSignUp = (event) => {
         variant: 'success'
       })
     )
-    .then(() => history.push('/'))
+    .then(() => this.setState({ updated: true }))
+    // .then(() => history.push('/'))
     .catch((error) => {
       this.setState({ email: '', password: '', passwordConfirmation: '' })
       msgAlert({
@@ -52,6 +54,9 @@ onSignUp = (event) => {
 
 render () {
   const { email, password, passwordConfirmation } = this.state
+  if (this.state.updated) {
+    return <Redirect to={'/home'} />
+  }
 
   return (
     <div className='row'>
@@ -82,7 +87,7 @@ render () {
             />
           </Form.Group>
           <Form.Group controlId='passwordConfirmation'>
-            <Form.Label className='headers'>Comfirm Password</Form.Label>
+            <Form.Label className='headers'>Confirm Password</Form.Label>
             <Form.Control
               required
               name='passwordConfirmation'
