@@ -6,6 +6,7 @@ import { signInSuccess, signInFailure } from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import Sparkles from 'react-sparkle'
 
 class SignIn extends Component {
   constructor (props) {
@@ -57,6 +58,7 @@ render () {
   return (
     <div className='row'>
       <div className='col-sm-10 col-md-8 mx-auto mt-5'>
+        <Sparkles flicker={false} />
         <h3>Sign In</h3>
         <Form onSubmit={this.onSignIn}>
           <Form.Group controlId='email'>
@@ -81,7 +83,8 @@ render () {
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Button variant='primary' type='submit'>Submit</Button>
+          <Button variant='primary' type='submit'>Submit
+          </Button>
         </Form>
       </div>
     </div>
