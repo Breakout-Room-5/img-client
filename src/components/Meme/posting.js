@@ -89,7 +89,7 @@ function PostMeme ({ user, msgAlert }) {
           )}
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId='name'>
-            <Form.Label>Name</Form.Label>
+            <Form.Label className='headers'>Name</Form.Label>
             <Form.Control
               required
               name='name'
@@ -99,7 +99,7 @@ function PostMeme ({ user, msgAlert }) {
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Upload your image</Form.Label>
+            <Form.Label className='headers'>Upload your image</Form.Label>
             <Form.Control id="fileUpload" type="file" label="Upload File Here" onChange={handleChange}/>
           </Form.Group>
           <Button variant='primary' type='submit'>Submit</Button>

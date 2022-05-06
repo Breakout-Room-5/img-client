@@ -59,10 +59,10 @@ render () {
     <div className='row'>
       <div className='col-sm-10 col-md-8 mx-auto mt-5'>
         <Sparkles flicker={false} />
-        <h3>Sign In</h3>
+        <h3 style={{ fontSize: '75px' }}>Sign In</h3>
         <Form onSubmit={this.onSignIn}>
           <Form.Group controlId='email'>
-            <Form.Label>Email address</Form.Label>
+            <Form.Label className='headers'>Email address</Form.Label>
             <Form.Control
               required
               type='email'
@@ -73,7 +73,7 @@ render () {
             />
           </Form.Group>
           <Form.Group controlId='password'>
-            <Form.Label>Password</Form.Label>
+            <Form.Label className='headers'>Password</Form.Label>
             <Form.Control
               required
               name='password'

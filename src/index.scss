@@ -1,14 +1,46 @@
 @import '~bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Monoton&family=Poiret+One&family=Rubik+Microbe&family=Supermercado+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap');
 .displayImg {
     display: flex;
     max-width: 500px;
     max-height: 500px;
     margin: 20px auto;
 }
+
+.nav-meme {
+        font-family: 'Fredoka One',
+        cursive;
+        font-size: 60px;
+        text-align: center;
+        color: black;
+}
+
+.nav-meme:hover {
+    font-family: 'Fredoka One',
+        cursive;
+    text-align: center;
+        background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2), color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22));
+        background-image: gradient(linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2), color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22));
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+        animation: animatedBackground 5s linear infinite;
+        -moz-animation: animatedBackground 5s linear infinite;
+        -webkit-animation: animatedBackground 5s linear infinite;
+        -ms-animation: animatedBackground 5s linear infinite;
+        -o-animation: animatedBackground 5s linear infinite;
+}
+
 .nav {
-    background-color: rgb(16, 243, 20);
-    color: red;
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+    // background-color: rgb(16, 243, 20);
+    background: rgb(0, 255, 27);
+    background: radial-gradient(circle, rgba(0, 255, 27, 1) 0%, rgba(255, 0, 166, 1) 100%);
+    min-width: 100%;
+    color: black;
+    font-size: 30px;
 }
 .navItem {
     color: red;
@@ -34,8 +66,7 @@ body {
 }
 
 .rainbow {
-    font-family: 'Fredoka One',
-    cursive;
+    font-family: 'Fredoka One', cursive;
     font-size: 100px;
     text-align: center;
     background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2), color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22));
@@ -112,4 +143,14 @@ p, h1, h3, label, h4 {
     -webkit-animation: animatedBackground 5s linear infinite;
     -ms-animation: animatedBackground 5s linear infinite;
     -o-animation: animatedBackground 5s linear infinite;
+}
+
+.card {
+    border: 15px solid rgb(16, 243, 20);
+    border-radius: 100px;
+    background-color: black;
+}
+
+.headers {
+    font-size: 90px;
 }

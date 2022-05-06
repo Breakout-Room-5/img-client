@@ -55,7 +55,7 @@ render () {
         <h3>Change Password</h3>
         <Form onSubmit={this.onChangePassword}>
           <Form.Group controlId='oldPassword'>
-            <Form.Label>Old password</Form.Label>
+            <Form.Label className='headers'>Old password</Form.Label>
             <Form.Control
               required
               name='oldPassword'
@@ -66,7 +66,7 @@ render () {
             />
           </Form.Group>
           <Form.Group controlId='newPassword'>
-            <Form.Label>New Password</Form.Label>
+            <Form.Label className='headers'>New Password</Form.Label>
             <Form.Control
               required
               name='newPassword'

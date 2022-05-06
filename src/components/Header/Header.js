@@ -27,7 +27,7 @@ const unauthenticatedOptions = (
 
 const alwaysOptions = (
   <Fragment>
-    <NavLink to='/home' className='nav-link'>Home</NavLink>
+    <NavLink to='/home' className='nav-link'></NavLink>
     {/* <NavLink exact to='/' className='nav-link'>Home</NavLink> */}
   </Fragment>
 )
@@ -36,15 +36,13 @@ const Header = ({ user }) => (
   <div className='nav'>
     <Navbar className='nav' expand='md'>
       <Navbar.Brand>
-        <Link to='/' style={{ color: '#FFF', textDecoration: 'none' }}>
-Meme Central
-        </Link>
+        <Link to='/home' className='nav-meme' style={{ textDecoration: 'none' }}>Meme Central</Link>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls='basic-navbar-nav' />
       <Navbar.Collapse id='basic-navbar-nav'>
         <Nav className='ml-auto'>
           {user && (
-            <span className='navbar-text mr-2'>Welcome, {user.email}</span>
+            <span className='navbar-text mr-2'>NiCe tO mEmE yOu, {user.email}</span>
           )}
           {alwaysOptions}
           {user ? authenticatedOptions : unauthenticatedOptions}
