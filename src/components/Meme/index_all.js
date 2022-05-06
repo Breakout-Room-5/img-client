@@ -12,7 +12,6 @@ function IndexAllMeme ({ user }) {
   //   const [selected, setSelected] = useState({})
   const [memes, setMemes] = useState([])
   useEffect(() => {
-    console.log(user)
     axios({
       url: `${apiUrl}/uploads/all`,
       method: 'GET',
@@ -26,7 +25,6 @@ function IndexAllMeme ({ user }) {
       // pass that array to map
     }).then((res) => {
       setMemes(res.data.uploads)
-      console.log(res.data.memes)
     })
     // .then(() => {
     //   msgAlert({

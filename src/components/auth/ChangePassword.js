@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 
 import { changePassword } from '../../api/auth'
 import { changePasswordSuccess, changePasswordFailure } from '../AutoDismissAlert/messages'
@@ -25,17 +25,19 @@ handleChange = (event) =>
 onChangePassword = (event) => {
   event.preventDefault()
 
-  const { msgAlert, history, user } = this.props
+  const { msgAlert, user } = this.props
 
   changePassword(this.state, user)
     .then(() =>
       msgAlert({
         heading: 'Change Password Success',
         message: changePasswordSuccess,
-        variant: 'success'
+        variant: 'success',
+        updated: false
       })
     )
-    .then(() => history.push('/'))
+    .then(() => this.setState({ updated: true }))
+    // .then(() => history.push('/'))
     .catch((error) => {
       this.setState({ oldPassword: '', newPassword: '' })
       msgAlert({
@@ -48,7 +50,9 @@ onChangePassword = (event) => {
 
 render () {
   const { oldPassword, newPassword } = this.state
-
+  if (this.state.updated) {
+    return <Redirect to={'/home'} />
+  }
   return (
     <div className='row'>
       <div className='col-sm-10 col-md-8 mx-auto mt-5'>
