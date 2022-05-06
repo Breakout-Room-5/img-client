@@ -3,8 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap');
 .displayImg {
     display: flex;
-    max-width: 500px;
-    max-height: 500px;
+    max-width: 600px;
+    max-height: 600px;
     margin: 20px auto;
     border: solid 7px;
     border-color: #2f2;
@@ -203,5 +203,19 @@ p, h1, h3, label, h4 {
 }
 
 .modal {
+    font-size: 25px;
+    color: white;
+    border: solid 10px darkred;
+}
+
+.modal-content {
+    font-family: 'Fredoka One',
+    cursive;
+    background-color: black;
+    border: solid 6px #ff2;
+    border-radius: 25px;
+}
+
+.modal-backdrop {
     background-color: black;
 }

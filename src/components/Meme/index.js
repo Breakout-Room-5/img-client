@@ -44,8 +44,8 @@ function IndexMeme ({ user, msgAlert }) {
       return (
         <div key={meme._id}>
           <Card className='memecard' style={{ width: '40rem' }}>
+            <Card.Title className='rainbow'>{meme.name}</Card.Title>
             <Link to={`/my-memes/${meme._id}`}>
-              <Card.Title className='rainbow'>{meme.name}</Card.Title>
               <Card.Img variant='top' src={meme.url} />
             </Link>
             <Card.Body>
