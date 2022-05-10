@@ -27,6 +27,19 @@ All images are hosted Amazon Web Service - S3 with user info saved on Mongo DB.
 7. PATCH new name for the image by the owner
 8. Styling
 
+## API End Points
+
+| Verb   | URI Pattern            | Controller#Action |
+|--------|------------------------|-------------------|
+| POST   | `/sign-up`             | `users#signup`    |
+| POST   | `/sign-in`             | `users#signin`    |
+| DELETE | `/sign-out`            | `users#signout`   |
+| PATCH  | `/change-password`     | `users#changepw`  |
+| GET    | `/uploads`             | `memes#index`     |
+| POST   | `/uploads`             | `memes#create`    |
+| GET    | `/uploads/:id`         | `memes#show`      |
+| PATCH  | `/uploads/:id`         | `memes#update`    |
+
 ### User Stories
 
   - As an unregistered user, I would like to sign up with email and password.
@@ -63,5 +76,7 @@ All images are hosted Amazon Web Service - S3 with user info saved on Mongo DB.
 
 ***
 
-## ERD
-![Meme Central API ERD](https://i.imgur.com/JUY8gld.png)
+## Wireframe and ERD
+![Meme Central Wireframe](https://i.imgur.com/JUY8gld.png)
+
+![Meme Central API ERD](https://i.imgur.com/aW5xBUB.png)
